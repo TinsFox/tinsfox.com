@@ -1,10 +1,9 @@
 import { NavHeader } from "~/components/nav-header";
 
-export default function Home() {
+export default function LabPage() {
   return (
-    <>
+    <div>
       <NavHeader />
-      123
-    </>
+    </div>
   );
 }
