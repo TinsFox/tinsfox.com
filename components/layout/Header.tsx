@@ -45,7 +45,8 @@ const nav = [
     href: "/bookmarks",
   },
 ];
-export function NavHeader() {
+
+export function Header() {
   const pathname = usePathname();
   return (
     <div>
