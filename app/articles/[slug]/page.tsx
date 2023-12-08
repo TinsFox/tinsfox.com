@@ -1,25 +1,58 @@
 import { format, parseISO } from "date-fns";
 import { allArticles } from "contentlayer/generated";
+import type { Metadata } from "next";
+import { absoluteUrl } from "~/lib/utils";
 
 export const generateStaticParams = async () =>
   allArticles.map((article) => ({ slug: article._raw.flattenedPath }));
 
-export const generateMetadata = ({
+type ArticlesPageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export const generateMetadata = async ({
   params,
-}: {
-  params: { slugAsParams: string };
-}) => {
+}: ArticlesPageProps): Promise<Metadata> => {
   const article = allArticles.find(
-    (article) => article._raw.flattenedPath === params.slugAsParams
+    (article) => article.slugAsParams === params.slug
   );
-  if (!article)
-    throw new Error(`Article not found for slug: ${params.slugAsParams}`);
-  return { title: article.title };
+  if (!article) {
+    throw new Error(`Article not found for slug: ${params.slug}`);
+  }
+  return {
+    title: article.title,
+    description: article.summary,
+    openGraph: {
+      title: article.title,
+      description: article.summary,
+      type: "article",
+      url: absoluteUrl(article.url),
+      // TODO
+      images: [
+        {
+          url: "",
+          width: 1200,
+          height: 630,
+          alt: "",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.summary,
+      // TODO
+      images: ["siteConfig.ogImage"],
+      creator: "@TinsFox",
+    },
+  };
 };
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const article = allArticles.find(
-    (article) => article._raw.flattenedPath === params.slug
+    (article) => article.slugAsParams === params.slug
   );
   if (!article) throw new Error(`Post not found for slug: ${params.slug}`);
 
