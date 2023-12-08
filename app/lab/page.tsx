@@ -1,3 +1,3 @@
 export default function LabPage() {
-  return <div>LabPage</div>;
+  return <div>Coming soon</div>;
 }

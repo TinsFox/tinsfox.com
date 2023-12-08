@@ -1,3 +1,3 @@
 export default function ArticlesPage() {
-  return <div>ArticlesPage</div>;
+  return <div>Coming soon</div>;
 }

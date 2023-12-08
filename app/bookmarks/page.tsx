@@ -1,3 +1,3 @@
 export default function BookmarksPage() {
-  return <div>BookmarksPage</div>;
+  return <div>Coming soon</div>;
 }
