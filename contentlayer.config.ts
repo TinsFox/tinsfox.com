@@ -1,4 +1,22 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  ComputedFields,
+  defineDocumentType,
+  makeSource,
+} from "contentlayer/source-files";
+import { getLastEditedDate } from "./lib/utils";
+
+const baseComputedFields: ComputedFields<any> = {
+  url: {
+    type: "string",
+    resolve: (content) => `/${content._raw.flattenedPath}`,
+  },
+  slugAsParams: {
+    type: "string",
+    resolve: (content) =>
+      content._raw.flattenedPath.split("/").slice(1).join("/"),
+  },
+  last_edited: { type: "date", resolve: getLastEditedDate },
+};
 
 export const Article = defineDocumentType(() => ({
   name: "Article",
@@ -10,14 +28,7 @@ export const Article = defineDocumentType(() => ({
     summary: { type: "string", required: true },
   },
   computedFields: {
-    url: {
-      type: "string",
-      resolve: (article) => `/${article._raw.flattenedPath}`,
-    },
-    slugAsParams: {
-      type: "string",
-      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
-    },
+    ...baseComputedFields,
   },
 }));
 

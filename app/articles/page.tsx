@@ -35,19 +35,23 @@ export default function ArticlesPage() {
   const articles = allArticles.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
-  console.log("articles: ", articles);
+
   return (
     <div>
-      <div className="mx-auto max-w-xl py-8">
-        <h1 className="mb-8 text-center text-2xl font-black">
-          Next.js + Contentlayer Example
+      <div className="mb-16">
+        <h1 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          Articles
         </h1>
-        <ul>
-          {articles.map((post, idx) => (
-            <ArticleCard key={idx} {...post} />
-          ))}
-        </ul>
+        <p className="mt-6 text-base text-gray-600 dark:text-gray-400">
+          Some difficulties I encountered during the development process and the
+          process of overcoming them.
+        </p>
       </div>
+      <ul className="space-y-16">
+        {articles.map((post, idx) => (
+          <ArticleCard key={idx} {...post} />
+        ))}
+      </ul>
     </div>
   );
 }
