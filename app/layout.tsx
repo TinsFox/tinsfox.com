@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { Root } from "~/components/layout";
 import clsx from "clsx";
-
-const inter = Inter({ subsets: ["latin"] });
+import { fontSans } from "~/lib/fonts";
 
 export const metadata: Metadata = {
   title: "TinsFox",
@@ -18,11 +16,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full light">
+    <html lang="en" className="h-full light" suppressHydrationWarning>
       <body
         className={clsx(
-          inter.className,
-          "antialiased bg-gray-50 dark:bg-black min-h-screen"
+          "antialiased bg-gray-50 dark:bg-black min-h-screen",
+          fontSans.variable
         )}
       >
         <Root>{children}</Root>

@@ -5,7 +5,7 @@ import { Article, allArticles } from "contentlayer/generated";
 function ArticleCard(article: Article) {
   return (
     <li>
-      <Link href={article.url} className="ground">
+      <Link href={article.slug} className="ground">
         <article>
           <time
             className="relative z-10 order-first mb-3 flex items-center text-sm text-gray-400 dark:text-gray-500 pl-3.5"
@@ -23,7 +23,7 @@ function ArticleCard(article: Article) {
             {article.title}
           </h2>
           <p className="relative z-10 mt-2 text-sm text-gray-600 dark:text-gray-400">
-            {article.summary}
+            {article.description}
           </p>
         </article>
       </Link>

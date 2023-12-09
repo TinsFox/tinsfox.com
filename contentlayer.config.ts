@@ -3,33 +3,31 @@ import {
   defineDocumentType,
   makeSource,
 } from "contentlayer/source-files";
-import { getLastEditedDate } from "./lib/utils";
 
-const baseComputedFields: ComputedFields<any> = {
-  url: {
+const baseComputedFields: ComputedFields = {
+  slug: {
     type: "string",
-    resolve: (content) => `/${content._raw.flattenedPath}`,
+    resolve: (doc) => `/${doc._raw.flattenedPath}`,
   },
   slugAsParams: {
     type: "string",
-    resolve: (content) =>
-      content._raw.flattenedPath.split("/").slice(1).join("/"),
+    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
   },
-  last_edited: { type: "date", resolve: getLastEditedDate },
 };
 
 export const Article = defineDocumentType(() => ({
   name: "Article",
-  filePathPattern: `articles/**/*.md`,
-  contentType: "markdown",
+  filePathPattern: `articles/**/*.mdx`,
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
-    summary: { type: "string", required: true },
+    description: {
+      type: "string",
+      required: true,
+    },
   },
-  computedFields: {
-    ...baseComputedFields,
-  },
+  computedFields: baseComputedFields,
 }));
 
 export default makeSource({
