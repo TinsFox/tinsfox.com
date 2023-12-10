@@ -1,7 +1,7 @@
 import { format, parseISO } from "date-fns";
 import { allArticles } from "contentlayer/generated";
 import type { Metadata } from "next";
-import { useMDXComponent } from "next-contentlayer/hooks";
+
 interface DocPageProps {
   params: {
     slug: string[];
@@ -47,7 +47,6 @@ const ArticleLayout = async ({ params }: DocPageProps) => {
   const article = await getDocFromParams({ params });
 
   if (!article) throw new Error(`Article not found for slug: ${params.slug}`);
-  const MDXContent = useMDXComponent(article.body.code);
 
   return (
     <article className="mx-auto max-w-xl py-8">
