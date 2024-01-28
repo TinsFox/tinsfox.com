@@ -13,6 +13,8 @@ import {
 import React from "react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "../theme-toggle";
+import { ModeToggle } from "../mode-toggle";
+import { cn } from "~/lib/utils";
 
 const nav = [
   {
@@ -53,7 +55,7 @@ export function Header() {
     <div>
       <div className="transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0s; transform: translateY(0px) fixed top-0 w-full z-50">
         <nav className="mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
-          <ul className="flex items-center my-4 px-3 text-sm font-medium text-gray-800 rounded-full shadow-lg bg-white/90 shadow-gray-800/5 ring-1 backdrop-blur dark:bg-gray-800/90 dark:text-gray-200 dark:ring-white/20 ring-gray-900/5">
+          <ul className="flex items-center my-4 px-3 text-sm font-medium text-gray-800 rounded-full shadow-lg bg-white/90 shadow-gray-800/5 ring-1 backdrop-blur dark:bg-[#222222] dark:text-[#E5E5E5] dark:ring-white/20 ring-gray-900/5">
             {nav.map((item) => {
               return (
                 <div className="relative" key={item.label}>
@@ -62,26 +64,33 @@ export function Header() {
                       href={item.href}
                       className="relative px-3 py-4 flex items-center justify-center transition hover:text-primary-500 dark:hover:text-primary-400 text-primary-600 dark:text-primary-400"
                     >
+                      {/* TODO change icon */}
                       {React.cloneElement(item.icon, {
-                        color: pathname === item.href ? "#0C9488" : "#262626",
                         strokeWidth: 1.3,
-                        className: "icon w-5 h-5 z-10 hover:text-[#0C9488]",
+                        className: cn(
+                          "icon w-5 h-5 z-10 hover:text-[#0C9488] ",
+                          pathname === item.href
+                            ? "text-[#0C9488]"
+                            : "dark:text-white text-[#646464]"
+                        ),
                       })}
                       {pathname === item.href ? (
-                        <span className="absolute inset-x-1 -bottom-px h-px bg-[#0C9488]"></span>
+                        // TODO
+                        <span className="absolute inset-x-1 -bottom-px h-px "></span>
                       ) : null}
 
                       <span className="absolute h-8 w-8 z-0 rounded-full bg-gray-100 dark:bg-white/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></span>
                       <span className="sr-only">{item.label}</span>
                     </Link>
                   </li>
+                  <li className="flex-1"></li>
                 </div>
               );
             })}
             <li className="flex-1"></li>
             <li>
               <div className="relative inline-flex">
-                <ThemeToggle></ThemeToggle>
+                <ModeToggle />
               </div>
             </li>
           </ul>
