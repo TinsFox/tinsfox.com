@@ -4,6 +4,7 @@ import React from "react";
 import { Root } from "~/components/layout";
 import clsx from "clsx";
 import { fontSans } from "~/lib/fonts";
+import { ThemeProvider } from "~/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "TinsFox",
@@ -23,7 +24,14 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Root>{children}</Root>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Root>{children}</Root>
+        </ThemeProvider>
       </body>
     </html>
   );

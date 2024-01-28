@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import React from "react";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "../theme-toggle";
 
 const nav = [
   {
@@ -80,10 +81,7 @@ export function Header() {
             <li className="flex-1"></li>
             <li>
               <div className="relative inline-flex">
-                <button className="relative px-3 py-4 flex items-center justify-center transition hover:text-primary-500 dark:hover:text-primary-400">
-                  <Moon color="#262626" />
-                  <span className="sr-only">Toggle theme</span>
-                </button>
+                <ThemeToggle></ThemeToggle>
               </div>
             </li>
           </ul>
