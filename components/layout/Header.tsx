@@ -7,12 +7,11 @@ import {
   FlaskConical,
   FolderDot,
   Home,
-  Moon,
   Newspaper,
 } from "lucide-react";
 import React from "react";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "../theme-toggle";
+
 import { ModeToggle } from "../mode-toggle";
 import { cn } from "~/lib/utils";
 

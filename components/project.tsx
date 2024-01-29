@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { isDev } from "~/lib/env";
-import { ComingSoon } from "./ComingSoon";
+import { ComingSoon } from "./coming-soon";
 
 export function Projects() {
   return (

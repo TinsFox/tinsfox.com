@@ -1,8 +1,8 @@
 import { PropsWithChildren } from "react";
 
-import { Content } from "./Content";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
+import { Content } from "./content";
+import { Footer } from "./footer";
+import { Header } from "./header";
 
 export const Root = ({ children }: PropsWithChildren) => {
   return (

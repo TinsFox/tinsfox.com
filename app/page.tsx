@@ -1,8 +1,8 @@
-import { Contact } from "~/components/Contact";
+import { Contact } from "~/components/contact";
 import { Introduction } from "~/components/Introduction";
-import { NewLetter } from "~/components/NewLetter";
-import { Projects } from "~/components/Projects";
-import { RecentArticles } from "~/components/RecentArticles";
+import { NewLetter } from "~/components/new-letter";
+import { Projects } from "~/components/project";
+import { RecentArticles } from "~/components/recent-articles";
 
 export default function Home() {
   return (
