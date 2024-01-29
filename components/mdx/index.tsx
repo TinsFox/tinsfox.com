@@ -1,3 +1,3 @@
 export function Mdx() {
-  return <div>mdx</div>;
+	return <div>mdx</div>;
 }

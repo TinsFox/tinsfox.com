@@ -1,4 +1,8 @@
 {
-  "deepscan.enable": true,
-  "cSpell.words": ["contentlayer"]
+	"deepscan.enable": true,
+	"cSpell.words": ["contentlayer"],
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": true,
+		"source.organizeImports.biome": true
+	}
 }

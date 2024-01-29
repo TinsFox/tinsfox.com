@@ -5,12 +5,12 @@ import { Footer } from "./footer";
 import { Header } from "./header";
 
 export const Root = ({ children }: PropsWithChildren) => {
-  return (
-    <>
-      <Header />
-      <Content>{children}</Content>
-      <div className="h-32"></div>
-      <Footer></Footer>
-    </>
-  );
+	return (
+		<>
+			<Header />
+			<Content>{children}</Content>
+			<div className="h-32" />
+			<Footer />
+		</>
+	);
 };
