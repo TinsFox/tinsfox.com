@@ -5,13 +5,13 @@ import { Projects } from "~/components/project";
 import { RecentArticles } from "~/components/recent-articles";
 
 export default function Home() {
-	return (
-		<div className="space-y-24">
-			<Introduction />
-			<Contact />
-			<Projects />
-			<RecentArticles />
-			<NewLetter />
-		</div>
-	);
+  return (
+    <div className="space-y-24">
+      <Introduction />
+      <Contact />
+      {/* <Projects /> */}
+      <RecentArticles />
+      <NewLetter />
+    </div>
+  );
 }
