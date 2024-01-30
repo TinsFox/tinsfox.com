@@ -44,10 +44,10 @@ export default function WhatsInMyBagPage() {
       <main className="min-h-screen">
         <div className="mb-12">
           <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-            What's in my bag?
+            What&apos;s in my bag?
           </h2>
           <p className="mt-6 text-base text-gray-600 dark:text-gray-400">
-            Something I'm using.
+            Something I&apos;m using.
           </p>
         </div>
         <div className="space-y-24">
